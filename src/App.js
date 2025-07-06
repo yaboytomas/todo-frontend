@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import react, { useState, useEffect } from 'react';
+import TaskForm from './components/TaskForm';
+import TaskList from './components/TaskList';
 
-function App() {
+const API_URL = 'https://todo-backend-5lck.onrender.com';
+
+function App() {  
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      setTasks(data);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Task Manager</h1>
+      <TaskForm fetchTasks={fetchTasks} />
+      {loading ? (
+        <p>Loading tasks...</p>
+      ) : (
+        <TaskList tasks={tasks} fetchTasks={fetchTasks} />
+      )}
     </div>
   );
 }
