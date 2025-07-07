@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const API_URL = 'https://todo-backend-5lck.onrender.com';
+const API_URL = 'https://todo-backend-5lck.onrender.com/api/tasks';
 
 export default function TaskForm({ fetchTasks }) {
   const [task, setTask] = useState({ title: '', description: '' });

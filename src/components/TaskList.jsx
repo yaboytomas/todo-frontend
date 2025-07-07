@@ -1,6 +1,6 @@
 import React from 'react';
 
-const API_URL = 'https://todo-backend-5lck.onrender.com';
+const API_URL = 'https://todo-backend-5lck.onrender.com/api/tasks';
 
 export default function TaskList({ tasks, fetchTasks }) {
   const handleDelete = async (id) => {
