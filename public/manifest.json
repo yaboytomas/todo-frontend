@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Task Manager",
+  "name": "Task Manager - Organize Your Tasks",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,8 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0ea5e9",
+  "background_color": "#f8fafc",
+  "description": "A modern task management application to help you stay organized and productive",
+  "categories": ["productivity", "utilities"]
 }

@@ -12,7 +12,7 @@ function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg bg-secondary-200 dark:bg-secondary-700 hover:bg-secondary-300 dark:hover:bg-secondary-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+      className="p-2 sm:p-3 rounded-lg bg-secondary-200 dark:bg-secondary-700 hover:bg-secondary-300 dark:hover:bg-secondary-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 flex-shrink-0"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {isDark ? (
@@ -57,35 +57,35 @@ function AppContent() {
   if (error) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-900 dark:to-secondary-800">
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
           <div className="max-w-4xl mx-auto">
-            <header className="flex items-center justify-between mb-8 animate-slide-down">
-              <div>
-                <h1 className="text-4xl font-bold text-secondary-900 dark:text-secondary-100 mb-2">
+            <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8 animate-slide-down">
+              <div className="flex-1 min-w-0">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-secondary-900 dark:text-secondary-100 mb-1 sm:mb-2">
                   Task Manager
                 </h1>
-                <p className="text-secondary-600 dark:text-secondary-400">
+                <p className="text-sm sm:text-base text-secondary-600 dark:text-secondary-400">
                   Organize your tasks efficiently
                 </p>
               </div>
               <ThemeToggle />
             </header>
             
-            <div className="card p-8 text-center animate-scale-in">
+            <div className="card p-6 sm:p-8 text-center animate-scale-in">
               <div className="text-danger-500 mb-4">
-                <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 14.5c-.77.833.192 2.5 1.732 2.5z" />
                 </svg>
               </div>
-              <h2 className="text-xl font-semibold text-secondary-900 dark:text-secondary-100 mb-2">
+              <h2 className="text-lg sm:text-xl font-semibold text-secondary-900 dark:text-secondary-100 mb-2">
                 Something went wrong
               </h2>
-              <p className="text-secondary-600 dark:text-secondary-400 mb-6">
+              <p className="text-sm sm:text-base text-secondary-600 dark:text-secondary-400 mb-6">
                 {error}
               </p>
               <button 
                 onClick={fetchTasks}
-                className="btn-primary"
+                className="btn-primary w-full sm:w-auto"
               >
                 Try Again
               </button>
@@ -98,34 +98,34 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-900 dark:to-secondary-800">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         <div className="max-w-4xl mx-auto">
-          <header className="flex items-center justify-between mb-8 animate-slide-down">
-            <div>
-              <h1 className="text-4xl font-bold text-secondary-900 dark:text-secondary-100 mb-2">
+          <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8 animate-slide-down">
+            <div className="flex-1 min-w-0">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-secondary-900 dark:text-secondary-100 mb-1 sm:mb-2">
                 Task Manager
               </h1>
-              <p className="text-secondary-600 dark:text-secondary-400">
+              <p className="text-sm sm:text-base text-secondary-600 dark:text-secondary-400">
                 Organize your tasks efficiently
               </p>
             </div>
             <ThemeToggle />
           </header>
           
-          <div className="grid gap-8 animate-fade-in">
-            <div className="card p-6 animate-slide-up">
-              <h2 className="text-xl font-semibold text-secondary-900 dark:text-secondary-100 mb-4">
+          <div className="grid gap-4 sm:gap-6 lg:gap-8 animate-fade-in">
+            <div className="card p-4 sm:p-6 animate-slide-up">
+              <h2 className="text-lg sm:text-xl font-semibold text-secondary-900 dark:text-secondary-100 mb-4">
                 Add New Task
               </h2>
               <TaskForm fetchTasks={fetchTasks} />
             </div>
             
-            <div className="card p-6 animate-slide-up" style={{animationDelay: '0.1s'}}>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-secondary-900 dark:text-secondary-100">
+            <div className="card p-4 sm:p-6 animate-slide-up" style={{animationDelay: '0.1s'}}>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 mb-4 sm:mb-6">
+                <h2 className="text-lg sm:text-xl font-semibold text-secondary-900 dark:text-secondary-100">
                   Your Tasks
                 </h2>
-                <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-sm font-medium self-start sm:self-center">
                   {tasks.length} task{tasks.length !== 1 ? 's' : ''}
                 </span>
               </div>

@@ -90,7 +90,8 @@ export default function TaskForm({ fetchTasks }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+      {/* Title Field */}
       <div className="space-y-2">
         <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300">
           Task Title *
@@ -100,17 +101,17 @@ export default function TaskForm({ fetchTasks }) {
           name="title"
           value={task.title}
           onChange={handleChange}
-          className={`input-field ${fieldErrors.title ? 'border-danger-500 focus:border-danger-500 focus:ring-danger-500' : ''}`}
+          className={`input-field text-base sm:text-sm ${fieldErrors.title ? 'border-danger-500 focus:border-danger-500 focus:ring-danger-500' : ''}`}
           placeholder="Enter a descriptive title for your task..."
           disabled={isSubmitting}
           maxLength={100}
         />
         {fieldErrors.title && (
-          <p className="text-danger-600 dark:text-danger-400 text-sm flex items-center animate-slide-down">
-            <svg className="w-4 h-4 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <p className="text-danger-600 dark:text-danger-400 text-sm flex items-start sm:items-center animate-slide-down">
+            <svg className="w-4 h-4 mr-1 flex-shrink-0 mt-0.5 sm:mt-0" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
-            {fieldErrors.title}
+            <span className="leading-tight">{fieldErrors.title}</span>
           </p>
         )}
         <div className="text-right">
@@ -120,6 +121,7 @@ export default function TaskForm({ fetchTasks }) {
         </div>
       </div>
 
+      {/* Description Field */}
       <div className="space-y-2">
         <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300">
           Description *
@@ -129,17 +131,17 @@ export default function TaskForm({ fetchTasks }) {
           value={task.description}
           onChange={handleChange}
           rows={4}
-          className={`input-field resize-none ${fieldErrors.description ? 'border-danger-500 focus:border-danger-500 focus:ring-danger-500' : ''}`}
+          className={`input-field resize-none text-base sm:text-sm ${fieldErrors.description ? 'border-danger-500 focus:border-danger-500 focus:ring-danger-500' : ''}`}
           placeholder="Describe what needs to be done..."
           disabled={isSubmitting}
           maxLength={500}
         />
         {fieldErrors.description && (
-          <p className="text-danger-600 dark:text-danger-400 text-sm flex items-center animate-slide-down">
-            <svg className="w-4 h-4 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <p className="text-danger-600 dark:text-danger-400 text-sm flex items-start sm:items-center animate-slide-down">
+            <svg className="w-4 h-4 mr-1 flex-shrink-0 mt-0.5 sm:mt-0" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
-            {fieldErrors.description}
+            <span className="leading-tight">{fieldErrors.description}</span>
           </p>
         )}
         <div className="text-right">
@@ -149,24 +151,26 @@ export default function TaskForm({ fetchTasks }) {
         </div>
       </div>
 
+      {/* Error Message */}
       {error && (
-        <div className="p-4 bg-danger-50 dark:bg-danger-900/20 border border-danger-200 dark:border-danger-800 rounded-lg animate-slide-down">
-          <div className="flex items-center">
-            <svg className="w-5 h-5 text-danger-600 dark:text-danger-400 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+        <div className="p-3 sm:p-4 bg-danger-50 dark:bg-danger-900/20 border border-danger-200 dark:border-danger-800 rounded-lg animate-slide-down">
+          <div className="flex items-start sm:items-center">
+            <svg className="w-5 h-5 text-danger-600 dark:text-danger-400 mr-2 flex-shrink-0 mt-0.5 sm:mt-0" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
-            <p className="text-danger-800 dark:text-danger-200 text-sm font-medium">
+            <p className="text-danger-800 dark:text-danger-200 text-sm font-medium leading-tight">
               {error}
             </p>
           </div>
         </div>
       )}
 
-      <div className="flex gap-4">
+      {/* Action Buttons */}
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
         <button
           type="submit"
           disabled={isSubmitting || !task.title.trim() || !task.description.trim()}
-          className="btn-primary flex-1 flex items-center justify-center"
+          className="btn-primary w-full sm:flex-1 flex items-center justify-center text-base sm:text-sm min-h-[44px] sm:min-h-[40px]"
         >
           {isSubmitting ? (
             <>
@@ -174,14 +178,14 @@ export default function TaskForm({ fetchTasks }) {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              Creating Task...
+              <span>Creating Task...</span>
             </>
           ) : (
             <>
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg>
-              Add Task
+              <span>Add Task</span>
             </>
           )}
         </button>
@@ -195,7 +199,7 @@ export default function TaskForm({ fetchTasks }) {
               setError(null);
             }}
             disabled={isSubmitting}
-            className="btn-secondary"
+            className="btn-secondary w-full sm:w-auto text-base sm:text-sm min-h-[44px] sm:min-h-[40px]"
           >
             Clear
           </button>
