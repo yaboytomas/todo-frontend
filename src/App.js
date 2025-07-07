@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 
-const API_URL = 'https://todo-backend-5lck.onrender.com';
+const API_URL = 'https://todo-backend-5lck.onrender.com/api/tasks';
 
 function App() {  
   const [tasks, setTasks] = useState([]);
